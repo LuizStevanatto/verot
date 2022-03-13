@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./src/server.ts",
+    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
   "devDependencies": {
