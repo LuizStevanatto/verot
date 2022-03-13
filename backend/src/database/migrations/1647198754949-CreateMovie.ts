@@ -42,7 +42,7 @@ export class CreateMovie1647198754949 implements MigrationInterface {
     });
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.createTable(this.table);
+        await queryRunner.createTable(this.table, true);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
