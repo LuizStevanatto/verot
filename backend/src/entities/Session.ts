@@ -1,29 +1,37 @@
 import {
     Column,
     Entity,
+    JoinColumn,
     JoinTable,
     ManyToMany,
     PrimaryGeneratedColumn,
 } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { Cinema } from "./Cinema";
+import { Movie } from "./Movie";
 
 @Entity("session")
-export class Movie {
+export class Session {
     @PrimaryGeneratedColumn("uuid")
     public _id: string;
+
+    @Column()
+    cinema_id: string;
+
+    @Column()
+    movie_id: string;
 
     @ManyToMany(() => Movie, (movie) => movie._id, {
         cascade: true,
     })
-    @JoinTable()
-    movieId: string;
+    @JoinColumn({ name: "movie_id" })
+    movie: Movie;
 
     @ManyToMany(() => Cinema, (cinema) => cinema._id, {
         cascade: true,
     })
-    @JoinTable()
-    cinemaId: string;
+    @JoinColumn({ name: "cinema_id" })
+    cinema: Cinema;
 
     @Column()
     weekDay: string;
