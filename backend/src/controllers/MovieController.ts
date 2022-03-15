@@ -52,12 +52,11 @@ class MovieController {
 
         const movie = await movieRepository.findOne({ where: { _id: id } });
 
-        if(movie){
+        if (movie) {
             return response.json(movie);
-        }else{
-            return response.json({message: "Movie not found!"});
+        } else {
+            return response.json({ message: "Movie not found!" });
         }
-
     }
     async findAll(request: Request, response: Response) {
         const movieRepository = getRepository(Movie);
@@ -111,8 +110,6 @@ class MovieController {
         } else {
             return response.json({ message: "Movie not found" });
         }
-
-        return response.json(movie);
     }
 }
 

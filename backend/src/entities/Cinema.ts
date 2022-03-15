@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 
 @Entity("cinema")
 export class Cinema {
@@ -13,4 +14,10 @@ export class Cinema {
 
     @Column()
     state: string;
+
+    constructor() {
+        if (!this._id) {
+            this._id = uuidv4();
+        }
+    }
 }
